@@ -1,0 +1,47 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  hole1_score: 1
+  hole2_score: 1
+  hole3_score: 1
+  hole4_score: 1
+  hole5_score: 1
+  hole6_score: 1
+  hole7_score: 1
+  hole8_score: 1
+  hole9_score: 1
+  hole10_score: 1
+  hole11_score: 1
+  hole12_score: 1
+  hole13_score: 1
+  hole14_score: 1
+  hole15_score: 1
+  hole16_score: 1
+  hole17_score: 1
+  hole18_score: 1
+  scorecard: one
+  course: one
+
+two:
+  name: MyString
+  hole1_score: 1
+  hole2_score: 1
+  hole3_score: 1
+  hole4_score: 1
+  hole5_score: 1
+  hole6_score: 1
+  hole7_score: 1
+  hole8_score: 1
+  hole9_score: 1
+  hole10_score: 1
+  hole11_score: 1
+  hole12_score: 1
+  hole13_score: 1
+  hole14_score: 1
+  hole15_score: 1
+  hole16_score: 1
+  hole17_score: 1
+  hole18_score: 1
+  scorecard: two
+  course: two
