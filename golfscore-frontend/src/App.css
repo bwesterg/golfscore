@@ -1,38 +1,66 @@
-.App {
+body {
+  background-color: rgb(181, 181, 221)
+}
+
+.scorecard-form {
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+  height: 300px;
+  margin: auto;
+  justify-content: space-evenly;
+  background-color: white;
+  padding: 10px 20px;
+  border-radius: 6px;
+  box-shadow: 10px 20px 20px -10px gray;
+  margin-bottom: 20px;
+
+}
+
+.scorecard-list {
+  display: flex;
+  flex-flow: row wrap;
+  list-style-type: none;
+  justify-content: space-between;
+  width: 90%;
+  padding-inline-start: 50px;
+}
+
+.scorecard-item {
+  background-color: white;
+  width: auto;
+  height: fit-content;
+  box-shadow: 10px 20px 20px -10px gray;
+  border-radius: 6px;
+  padding: 10px;
+  margin-bottom:20px;
+}
+
+.holes-heading {
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.course-heading, .tee-heading {
+  margin-bottom: 0;
+  margin-top: 0;
+
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.distance-heading {
+  margin-top: 0;
+  margin-bottom: 5px
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.hole-col {
+  width: 30px;
+  text-align: center;
+  border-bottom:1px solid black;
 }
 
-.App-link {
-  color: #61dafb;
+.score-col {
+  text-align: center;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.player-col {
+  padding-right: 10rem;
 }
