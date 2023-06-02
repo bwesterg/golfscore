@@ -101,3 +101,8 @@ body {
 .headings-table {
   margin-left: 50px;
 }
+
+.delete-button {
+  color: white;
+  background-color: rgb(240, 147, 147);
+}

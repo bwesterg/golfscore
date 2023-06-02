@@ -13,7 +13,6 @@ class ScorecardsController < ApplicationController
     
     def create
         # players_attributes = params[:players].map { |player| { name: player } }
-
         players_attributes = params[:players].map do |player|
             {
                 name: player[:name],
@@ -47,4 +46,13 @@ class ScorecardsController < ApplicationController
     
         render json: @scorecard, status: :created
     end
+
+    def destroy
+        @scorecard = Scorecard.find(params[:id])
+
+        @scorecard.destroy
+
+        render status: :no_content
+    end
+
 end

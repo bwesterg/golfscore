@@ -36,12 +36,21 @@ class App extends Component {
     })
   }
 
+  deleteScorecard = (id) => {
+    let filtered = this.state.scorecards.filter(scorecard => scorecard.id !== id)
+    this.setState({
+      scorecards: filtered
+    })
+
+    fetch(scorecardUrl + "/" + id, {method: "DELETE"})
+  }
+
   render() {
     return (
       <div className="App">
         <h1>Golf Scorecard Collection</h1>
         <ScorecardForm addScorecard={this.addScorecard}/>
-        <ScorecardContainer scorecards={this.state.scorecards} />
+        <ScorecardContainer deleteScorecard={this.deleteScorecard} scorecards={this.state.scorecards} />
       </div>
     );
   }

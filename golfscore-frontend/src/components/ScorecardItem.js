@@ -1,7 +1,10 @@
 import React from 'react';
 import ScorecardPlayers from './ScorecardPlayers';
 
-export default function ScorecardItem({ course_name, tees_name, tees_yardage, players }) {
+export default function ScorecardItem({ id, course_name, tees_name, tees_yardage, players, deleteScorecard }) {
+    
+    const handleClick = (event) => deleteScorecard(id)
+    
     return (
         <li className="scorecard-item">
             {/* <h3 className="course-heading">Golf Course:<span className="course-heading2"> {course_name} </span></h3>
@@ -44,9 +47,11 @@ export default function ScorecardItem({ course_name, tees_name, tees_yardage, pl
                     {players.map((player) => (
                         <ScorecardPlayers key={player.id} {...player} />
                         ))}
-                       
+                    
                 </tbody>
             </table>
+
+            <button onClick={handleClick} className="delete-button">DELETE</button>
         </li>
     );
 }
