@@ -11,8 +11,8 @@ body {
 .scorecard-form {
   display: flex;
   flex-direction: column;
-  width: 300px;
-  height: 300px;
+  width: max-content;
+  height: auto;
   margin: auto;
   justify-content: space-evenly;
   background-color: white;
@@ -20,7 +20,11 @@ body {
   border-radius: 6px;
   box-shadow: 10px 20px 20px -10px rgb(154 154 214);
   margin-bottom: 20px;
+}
 
+.edit-hole-score {
+  width: 30px;
+  padding-right: 0;
 }
 
 .scorecard-list {
