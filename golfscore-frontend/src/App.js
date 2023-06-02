@@ -36,6 +36,20 @@ class App extends Component {
     })
   }
 
+  updateScorecard = (updatedScorecard) => {
+    let scorecards = this.state.scorecards.map(scorecard => scorecard.id === updatedScorecard.id ? updatedScorecard : scorecard )
+
+    this.setState({ scorecards })
+
+    fetch(scorecardUrl + "/" + updatedScorecard.id, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/JSON"
+      },
+      body: JSON.stringify({scorecard: updatedScorecard})
+    })
+  }
+
   deleteScorecard = (id) => {
     let filtered = this.state.scorecards.filter(scorecard => scorecard.id !== id)
     this.setState({
@@ -50,7 +64,7 @@ class App extends Component {
       <div className="App">
         <h1>Golf Scorecard Collection</h1>
         <ScorecardForm addScorecard={this.addScorecard}/>
-        <ScorecardContainer deleteScorecard={this.deleteScorecard} scorecards={this.state.scorecards} />
+        <ScorecardContainer  updateScorecard={this.updateScorecard} deleteScorecard={this.deleteScorecard} scorecards={this.state.scorecards} />
       </div>
     );
   }

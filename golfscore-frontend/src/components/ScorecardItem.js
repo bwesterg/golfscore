@@ -2,23 +2,15 @@ import React, { useState } from 'react';
 import ScorecardPlayers from './ScorecardPlayers';
 import ScorecardForm from './ScorecardForm';
 
-export default function ScorecardItem({ id, course_name, tees_name, tees_yardage, players, deleteScorecard}) {
+export default function ScorecardItem({ id, course_name, tees_name, tees_yardage, players, deleteScorecard, updateScorecard }) {
     
     const scorecard = {id, course_name, tees_name, tees_yardage, players}
     //doing this to send, with the scorecard prop, to the ScorecardForm, for the purpose of editing
-
     const [isToggled, setIsToggled] = useState(false)
     const handleClick =  (event) => deleteScorecard(id)
-
-    // const handleToggle = (event) =>setIsToggled(!isToggled) 
-    //left this^^ function in the onClick for the edit button below
-
+    const handleToggle = (event) =>setIsToggled(!isToggled) 
     const scorecardCard = () => (
         <li className="scorecard-item">
-            {/* <h3 className="course-heading">Golf Course:<span className="course-heading2"> {course_name} </span></h3>
-                
-            <h3 className="tee-heading">Tees: <span className="tee-heading2">{tees_name}</span></h3>
-            <h3 className="distance-heading">Distance: {tees_yardage} Yards</h3> */}
             <table className="headings-table">
                 <tbody>
                     <tr>
@@ -35,7 +27,6 @@ export default function ScorecardItem({ id, course_name, tees_name, tees_yardage
                     </tr>
                 </tbody>
             </table>
-            
             <table>
                 <thead>
                     <tr>
@@ -55,14 +46,18 @@ export default function ScorecardItem({ id, course_name, tees_name, tees_yardage
                     {players.map((player) => (
                         <ScorecardPlayers key={player.id} {...player} />
                         ))}
-                       
                 </tbody>
             </table>
             <button onClick={handleClick} className="delete-button">DELETE</button>
-            <button onClick={() => setIsToggled(!isToggled)} className="edit-button">EDIT</button>
+            <button onClick={handleToggle} className="edit-button">EDIT</button>
         </li>
     )
 
-    return isToggled ? <ScorecardForm scorecard={scorecard} /> : scorecardCard();
+    return isToggled 
+    ? <ScorecardForm 
+        handleToggle={handleToggle}
+        handleInputChange={updateScorecard} 
+        scorecard={scorecard} /> 
+    : scorecardCard();
 }
 

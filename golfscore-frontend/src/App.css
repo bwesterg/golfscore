@@ -4,15 +4,13 @@
 
 body {
   background-color: rgb(212, 212, 238);
-  /* background-color: rgb(101, 101, 129) */
-
 }
 
 .scorecard-form {
   display: flex;
   flex-direction: column;
-  width: 300px;
-  height: 300px;
+  width: max-content;
+  height: auto;
   margin: auto;
   justify-content: space-evenly;
   background-color: white;
@@ -20,7 +18,11 @@ body {
   border-radius: 6px;
   box-shadow: 10px 20px 20px -10px rgb(154 154 214);
   margin-bottom: 20px;
+}
 
+.edit-hole-score {
+  width: 30px;
+  padding-right: 0;
 }
 
 .scorecard-list {
@@ -66,7 +68,6 @@ body {
   text-align: center;
 }
 
-
 .course-heading, .tee-heading, .distance-heading {
   color: gray;
   font-size: 12px;
@@ -79,7 +80,6 @@ body {
 }
 
 .player-col {
-  /* padding-right: 1rem; */
   border-bottom: 0.5px solid black;
   color: gray;
   font-size: 12px;
