@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import ScorecardPlayers from './ScorecardPlayers';
 import ScorecardForm from './ScorecardForm';
 
-export default function ScorecardItem({ id, course_name, tees_name, tees_yardage, players, deleteScorecard}) {
+export default function ScorecardItem({ id, course_name, tees_name, tees_yardage, players, deleteScorecard, updateScorecard }) {
     
     const scorecard = {id, course_name, tees_name, tees_yardage, players}
     //doing this to send, with the scorecard prop, to the ScorecardForm, for the purpose of editing
@@ -53,6 +53,11 @@ export default function ScorecardItem({ id, course_name, tees_name, tees_yardage
         </li>
     )
 
-    return isToggled ? <ScorecardForm scorecard={scorecard} /> : scorecardCard();
+    return isToggled 
+    ? <ScorecardForm 
+        handleToggle={handleToggle}
+        handleInputChange={updateScorecard} 
+        scorecard={scorecard} /> 
+    : scorecardCard();
 }
 

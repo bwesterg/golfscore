@@ -26,3 +26,5 @@ class CreatePlayers < ActiveRecord::Migration[7.0]
     end
   end
 end
+
+# // Note: for production, I would create a function to map destructured holeX_scores.  Leaving as-is due to time constraints

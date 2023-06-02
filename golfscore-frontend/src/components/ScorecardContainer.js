@@ -1,10 +1,10 @@
 import React from 'react';
 import ScorecardItem from './ScorecardItem';
 
-export default function ScorecardContainer({ scorecards, deleteScorecard }){
+export default function ScorecardContainer({ scorecards, deleteScorecard, updateScorecard }){
     console.log(scorecards)
     const showScorecards = () => {
-        return scorecards.map(scorecard => <ScorecardItem key={scorecard.id} {...scorecard} deleteScorecard={deleteScorecard} />)
+        return scorecards.map(scorecard => <ScorecardItem key={scorecard.id} {...scorecard} updateScorecard={updateScorecard} deleteScorecard={deleteScorecard} />)
     }
 
     return(
@@ -13,15 +13,3 @@ export default function ScorecardContainer({ scorecards, deleteScorecard }){
         </ul>
     )
 }
-
-// export default function ScorecardContainer({ scorecards }) {
-//     console.log(scorecards)
-//     const showScorecards = () => {
-//       return scorecards.map((scorecard) => (
-//         <ScorecardItem key={scorecard.id} {...scorecard} />
-//       ));
-//     };
-  
-//     return <ul className="scorecard-list">{showScorecards()}</ul>;
-//   }
-  
