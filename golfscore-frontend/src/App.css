@@ -35,7 +35,7 @@ body {
 .scorecard-item {
   background-color: white;
   width: auto;
-  height: fit-content;
+  height: max-content;
   box-shadow: 10px 20px 20px -10px rgb(154 154 214);
   border-radius: 6px;
   padding: 10px;
@@ -100,4 +100,14 @@ body {
 
 .headings-table {
   margin-left: 50px;
+}
+
+.delete-button {
+  background-color: red;
+  color: white;
+}
+
+.edit-button {
+  background-color: blue;
+  color: white;
 }
