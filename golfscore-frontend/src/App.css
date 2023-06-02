@@ -1,5 +1,11 @@
+* {
+  font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
 body {
-  background-color: rgb(181, 181, 221)
+  background-color: rgb(212, 212, 238);
+  /* background-color: rgb(101, 101, 129) */
+
 }
 
 .scorecard-form {
@@ -12,7 +18,7 @@ body {
   background-color: white;
   padding: 10px 20px;
   border-radius: 6px;
-  box-shadow: 10px 20px 20px -10px gray;
+  box-shadow: 10px 20px 20px -10px rgb(154 154 214);
   margin-bottom: 20px;
 
 }
@@ -30,7 +36,7 @@ body {
   background-color: white;
   width: auto;
   height: fit-content;
-  box-shadow: 10px 20px 20px -10px gray;
+  box-shadow: 10px 20px 20px -10px rgb(154 154 214);
   border-radius: 6px;
   padding: 10px;
   margin-bottom:20px;
@@ -43,7 +49,6 @@ body {
 .course-heading, .tee-heading {
   margin-bottom: 0;
   margin-top: 0;
-
 }
 
 .distance-heading {
@@ -54,13 +59,45 @@ body {
 .hole-col {
   width: 30px;
   text-align: center;
-  border-bottom:1px solid black;
+  border-bottom:0.5px solid black;
 }
 
 .score-col {
   text-align: center;
 }
 
+
+.course-heading, .tee-heading, .distance-heading {
+  color: gray;
+  font-size: 12px;
+  text-align: right;
+}
+.course-heading2, .tee-heading2, .distance-heading2 {
+  color: black;
+  font-size: 16px;
+  vertical-align: super;
+}
+
 .player-col {
-  padding-right: 10rem;
+  /* padding-right: 1rem; */
+  border-bottom: 0.5px solid black;
+  color: gray;
+  font-size: 12px;
+}
+
+.player-name-col, th.player-col {
+  text-align: right;
+  border-right: 0.5px solid black;
+  padding-right: 5px;
+}
+
+.player-name-col {
+  color:black;
+  font-size: 14px;
+  font-weight: bold;
+  
+}
+
+.headings-table {
+  margin-left: 50px;
 }

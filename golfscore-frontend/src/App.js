@@ -18,11 +18,21 @@ class App extends Component {
     fetch(scorecardUrl)
       .then(response => response.json())
       .then(scorecards => this.setState({scorecards}))
-    }
+  }
 
   addScorecard = (newScorecard) => {
     this.setState({
       scorecards: [...this.state.scorecards, newScorecard]
+    })
+    console.log('testing');
+    console.log(newScorecard)
+
+    fetch(scorecardUrl, {
+      method: "Post",
+      headers: {
+        "Content-Type": "application/JSON"
+      },
+      body: JSON.stringify(newScorecard)
     })
   }
 
