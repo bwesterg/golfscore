@@ -43,7 +43,8 @@ export default function ScorecardItem({ course_name, tees_name, tees_yardage, pl
                 <tbody>
                     {players.map((player) => (
                         <ScorecardPlayers key={player.id} {...player} />
-                    ))}
+                        ))}
+                       
                 </tbody>
             </table>
         </li>
