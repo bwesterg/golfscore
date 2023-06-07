@@ -34,6 +34,21 @@ body {
   padding-inline-start: 50px;
 }
 
+.scorecard-heading {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.scorecard-heading h5 {
+  margin-block-start: 0;
+  margin-block-end: 0;
+}
+
+.scorecard-grid {
+  margin-top: 10px;
+}
+
 .scorecard-item {
   background-color: white;
   width: auto;
@@ -42,6 +57,15 @@ body {
   border-radius: 6px;
   padding: 10px;
   margin-bottom:20px;
+}
+
+.add-players {
+  display: flex;
+  flex-direction: column;
+}
+
+.add-player-button {
+  margin: 10px 0px
 }
 
 .holes-heading {

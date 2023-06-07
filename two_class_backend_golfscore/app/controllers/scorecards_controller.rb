@@ -74,17 +74,16 @@ class ScorecardsController < ApplicationController
                 hole17_score: player[:hole17_score],
                 hole18_score: player[:hole18_score]
             }
-            end
-        
-            if @scorecard.update(
+        end
+        if @scorecard.update(
             course_name: params[:course_name],
             tees_name: params[:tees_name],
             tees_yardage: params[:tees_yardage],
             players_attributes: players_attributes
-            )
-            render json: @scorecard
+        )
+                render json: @scorecard
             else
-            render json: { errors: @scorecard.errors.full_messages }, status: :unprocessable_entity
+                render json: { errors: @scorecard.errors.full_messages }, status: :unprocessable_entity
             end
         end
         
