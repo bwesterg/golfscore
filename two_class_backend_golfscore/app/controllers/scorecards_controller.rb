@@ -47,13 +47,13 @@ class ScorecardsController < ApplicationController
     
         render json: @scorecard, status: :created
     end
-
-    
+        
     def update
         @scorecard = Scorecard.find(params[:id])
     
         players_attributes = params[:players].map do |player|
             {
+                id: player[:id],
                 name: player[:name],
                 hole1_score: player[:hole1_score],
                 hole2_score: player[:hole2_score],

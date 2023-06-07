@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import './App.css';
 import ScorecardContainer from './components/ScorecardContainer';
 import ScorecardForm from './components/ScorecardForm';
@@ -16,58 +16,63 @@ class App extends Component {
 
   getScorecards = () => {
     fetch(scorecardUrl)
-      .then(response => response.json())
-      .then(scorecards => this.setState({scorecards}))
+      .then(response=>response.json())
+      .then(console.log('test'))
+      .then(scorecards=>this.setState({scorecards}))
   }
 
   addScorecard = (newScorecard) => {
     this.setState({
       scorecards: [...this.state.scorecards, newScorecard]
     })
-    console.log('testing');
-    console.log(newScorecard)
 
     fetch(scorecardUrl, {
-      method: "Post",
+      method: "POST",
       headers: {
-        "Content-Type": "application/JSON"
+        "Content-Type": "application/json"
       },
       body: JSON.stringify(newScorecard)
     })
   }
 
   updateScorecard = (updatedScorecard) => {
-    let scorecards = this.state.scorecards.map(scorecard => scorecard.id === updatedScorecard.id ? updatedScorecard : scorecard )
-
+    let scorecards = this.state.scorecards.map(scorecard => scorecard.id === updatedScorecard.id ? updatedScorecard : scorecard)
+  
     this.setState({ scorecards })
 
-    fetch(scorecardUrl + "/" + updatedScorecard.id, {
+    fetch(scorecardUrl + "/" + updatedScorecard.id,  {
       method: "PATCH",
       headers: {
-        "Content-Type": "application/JSON"
+        "Content-Type": "application/json"
       },
-      body: JSON.stringify({scorecard: updatedScorecard})
+      body: JSON.stringify(updatedScorecard)
+      //will need to update this ^^^ to 'scorecard: updatedScorecard' if backend 
+      //is updated to use strong params.
     })
   }
 
   deleteScorecard = (id) => {
-    let filtered = this.state.scorecards.filter(scorecard => scorecard.id !== id)
+    let filteredScorecards = this.state.scorecards.filter(scorecard => scorecard.id !== id)
     this.setState({
-      scorecards: filtered
+      scorecards: filteredScorecards
     })
 
     fetch(scorecardUrl + "/" + id, {method: "DELETE"} )
   }
 
-  render() {
+
+  render(){
     return (
-      <div className="App">
-        <h1>Golf Scorecard Collection</h1>
-        <ScorecardForm addScorecard={this.addScorecard}/>
-        <ScorecardContainer  updateScorecard={this.updateScorecard} deleteScorecard={this.deleteScorecard} scorecards={this.state.scorecards} />
+      <div>
+        <div className="title-bar">
+          <h1>Golf Scorecard App</h1>
+        </div>
+        <ScorecardForm submitAction={this.addScorecard}/>
+        <ScorecardContainer updateScorecard={this.updateScorecard} deleteScorecard={this.deleteScorecard} scorecards={this.state.scorecards}/>
       </div>
     );
   }
 }
 
 export default App;
+
