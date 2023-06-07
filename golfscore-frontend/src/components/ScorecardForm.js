@@ -260,6 +260,20 @@ export default class ScorecardForm extends Component {
 
     state = initialState
 
+    componentDidMount(){
+        const {scorecard} = this.props
+        if(this.props.scorecard){
+            const {id, course_name, tees_name, tees_yardage, players} = scorecard
+            this.setState({
+                id,
+                course_name,
+                tees_name,
+                tees_yardage,
+                players
+            });
+        }
+    }
+
     handleChange = (event) => {
         let { name, value } = event.target
         this.setState({ [name]: value })
@@ -268,19 +282,19 @@ export default class ScorecardForm extends Component {
     handleAddPlayer = () => {
         const { players } = this.state;
         const newPlayer = {
-          name: "",
-          ...Object.fromEntries(
-            Array.from({ length: 18 }, (_, index) => [
-              `hole${index + 1}_score`,
-              0,
-            ])
-          ),
+            name: "",
+            ...Object.fromEntries(
+                Array.from({ length: 18 }, (_, index) => [
+                `hole${index + 1}_score`,
+                0,
+                ])
+            ),
+            };
+            players.push(newPlayer);
+            this.setState({ players });
         };
-        players.push(newPlayer);
-        this.setState({ players });
-      };
-      
-      
+        
+        
 
     handleChangePlayer = (event, index) => {
         const { value } = event.target;
@@ -289,16 +303,26 @@ export default class ScorecardForm extends Component {
         this.setState({ players });
     };
 
+    handleChangeScore = (event, playerIndex, holeIndex) => {
+        const { value } = event.target;
+        const { players } = this.state;
+        players[playerIndex][`hole${holeIndex}_score`] = parseInt(value, 10);
+        this.setState({ players });
+    };
+
     handleSubmit = (event) => {
         event.preventDefault();
-        this.props.addScorecard(this.state)
+        this.props.submitAction(this.state)
+        if(this.props.handleToggle){
+            this.props.handleToggle()
+        }
     }
     
     render() {
         const {course_name, tees_name, tees_yardage, players} = this.state
         return (
             <form className="scorecard-form" onSubmit={this.handleSubmit}>
-                <h2>Create a New Scorecard</h2>
+                {this.props.scorecard ? <h2>EDIT This Scorecard</h2> : <h2>CREATE a New Scorecard</h2> }
                 <label>Course Name</label>
                 <input
                     type="text" 
@@ -321,15 +345,69 @@ export default class ScorecardForm extends Component {
                     onChange={this.handleChange}
                 />
                 <div className="add-players">
-                    <label>Players</label>
-                    {players.map((player, index) => (
-                        <input
-                            key={index}
+                    { this.props.scorecard ? null :<label>Players</label> }
+                    {players.map((player, playerIndex) => (
+                        <div key={playerIndex}>
+                            {this.props.scorecard ? (
+                                null
+                            ) : <input
                             type="text"
-                            name={`player${index}`}
+                            name={`player${playerIndex}`}
                             value={player.name}
-                            onChange={(event) => this.handleChangePlayer(event, index)}
-                        />
+                            onChange={(event) =>
+                            this.handleChangePlayer(event, playerIndex)
+                            }
+                        /> }
+
+                        {this.props.scorecard ? (
+                            <div className="scorecard-grid">
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th>Player</th>
+                                            {[...Array(18)].map((_, holeIndex) => (
+                                                <th 
+                                                    key={holeIndex}>{holeIndex + 1}
+                                                </th>
+                                            ))}
+                                        </tr>
+                                    </thead>
+                                    <tbody className="score-update">
+                                        <tr>
+                                            <td>
+                                                <input
+                                                    class="player-name-edit"
+                                                    type="text"
+                                                    name={`player${playerIndex}`}
+                                                    value={player.name}
+                                                    onChange={(event) =>
+                                                        this.handleChangePlayer(event, playerIndex)
+                                                    }
+                                                />
+                                            </td>
+                                            {[...Array(18)].map((_, holeIndex) => (
+                                                <td key={holeIndex}>
+                                                    <input
+                                                        class="hole-score"
+                                                        type="number"
+                                                        name={`hole${holeIndex + 1}`}
+                                                        value={player[`hole${holeIndex + 1}_score`]}
+                                                        onChange={(event) =>
+                                                            this.handleChangeScore(
+                                                                event,
+                                                                playerIndex,
+                                                                holeIndex + 1
+                                                            )
+                                                        }
+                                                    />
+                                                </td>
+                                            ))}
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        ) : null }
+                        </div>
                     ))}
                 </div>
                 <button 
@@ -343,3 +421,4 @@ export default class ScorecardForm extends Component {
         );
     }
 }
+

@@ -61,8 +61,13 @@
 //     : scorecardCard();
 // }
 import React, { useState } from 'react';
+import ScorecardForm from './ScorecardForm';
 
-export default function ScorecardItem({ id, course_name, tees_name, tees_yardage, players, deleteScorecard }) {
+export default function ScorecardItem({ id, course_name, tees_name, tees_yardage, players, updateScorecard, deleteScorecard }) {
+
+    const scorecard = {id, course_name, tees_name, tees_yardage, players }
+    //^^^ Above is "un"-destructuring main parts of scorecard to send as 
+    //props to ScorecardForm, if conditional is triggered to edit a scorecard.
 
     const renderHeadings = () => {
         const headings = [];
@@ -89,39 +94,43 @@ export default function ScorecardItem({ id, course_name, tees_name, tees_yardage
 
         const [isToggled, setIsToggled] = useState(false)
         const handleClick = (event) => deleteScorecard(id)
-        const handleToggle = (event) =>setIsToggled(!isToggled)
+        const handleToggle = (event) => setIsToggled(!isToggled)
+        const scorecardCard = () => (
+            <li>
+                <div className="scorecard-item">
 
-    return (
-        <li>
-            <div className="scorecard-item">
-
-                <div className="scorecard-heading">
-                    <div>
-                        <h5>Course: {course_name}</h5>
+                    <div className="scorecard-heading">
+                        <div>
+                            <h5>Course: {course_name}</h5>
+                        </div>
+                        <div>
+                            <h5>Tees: {tees_name}</h5>
+                        </div>
+                        <div>
+                            <h5>Yards: {tees_yardage}</h5>
+                        </div>
                     </div>
-                    <div>
-                        <h5>Tees: {tees_name}</h5>
-                    </div>
-                    <div>
-                        <h5>Yards: {tees_yardage}</h5>
-                    </div>
+                    <table className="scorecard-grid">
+                        <thead>   
+                            <tr>
+                                <th>Player</th>
+                                {renderHeadings()}
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {renderPlayerScores()}
+                        </tbody>
+                    </table>
+                    <button onClick={handleClick} className="delete-button">DELETE Scorecard</button>
+                    <button onClick={handleToggle} className="edit-button">EDIT Scorecard</button>
                 </div>
+            </li>
+        )
 
-                <table className="scorecard-grid">
-                    <thead>   
-                        <tr>
-                            <th>Player</th>
-                            {renderHeadings()}
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {renderPlayerScores()}
-                    </tbody>
-                </table>
-                <button onClick={handleClick} className="delete-button">DELETE Scorecard</button>
-                <button onClick={handleToggle} className="edit-button">EDIT Scorecard</button>
-
-            </div>
-        </li>
-    );
+    return isToggled 
+        ? <ScorecardForm 
+            handleToggle={handleToggle} 
+            submitAction={updateScorecard} 
+            scorecard={scorecard}/> 
+        : scorecardCard();
 }

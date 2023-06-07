@@ -49,6 +49,19 @@ body {
   margin-top: 10px;
 }
 
+.scorecard-grid .score-update input{
+  width: 25px;
+}
+
+.scorecard-grid .score-update input.player-name-edit{
+  width: 120px;
+}
+
+.scorecard-grid .score-update input.hole-score{
+  text-align: right;
+  padding-left: 10px;
+}
+
 .scorecard-item {
   background-color: white;
   width: auto;
@@ -135,3 +148,4 @@ body {
   background-color: blue;
   color: white;
 }
+

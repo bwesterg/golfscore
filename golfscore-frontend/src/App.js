@@ -109,11 +109,19 @@ class App extends Component {
     })
   }
 
-  // updateScorecard = (newScorecard) => {
-  //   this.setState({
-  //     scorecards: [...this.state.scorecards, newScorecard]
-  //   })
-  // }
+  updateScorecard = (updatedScorecard) => {
+    let scorecards = this.state.scorecards.map(scorecard => scorecard.id === updatedScorecard.id ? updatedScorecard : scorecard)
+  
+    this.setState({ scorecards })
+
+    fetch(scorecardUrl + "/" + updatedScorecard.id,  {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(updatedScorecard)
+    })
+  }
 
   deleteScorecard = (id) => {
     let filteredScorecards = this.state.scorecards.filter(scorecard => scorecard.id !== id)
@@ -129,8 +137,8 @@ class App extends Component {
     return (
       <div>
         <h1>Golf Scorecard App</h1>
-        <ScorecardForm addScorecard={this.addScorecard}/>
-        <ScorecardContainer deleteScorecard={this.deleteScorecard} scorecards={this.state.scorecards}/>
+        <ScorecardForm submitAction={this.addScorecard}/>
+        <ScorecardContainer updateScorecard={this.updateScorecard} deleteScorecard={this.deleteScorecard} scorecards={this.state.scorecards}/>
       </div>
     );
   }
