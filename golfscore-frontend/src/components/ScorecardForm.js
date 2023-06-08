@@ -1,32 +1,49 @@
 import React, { Component, useState } from 'react';
 import ScorecardItem from './ScorecardItem';
 
+    // const initialState = {
+    //     course_name: "",
+    //     tees_name: "",
+    //     tees_yardage: "",
+    //     players: [{ 
+    //         name: "", 
+    //         hole1_score: 0, 
+    //         hole2_score: 0,
+    //         hole3_score: 0,
+    //         hole4_score: 0,
+    //         hole5_score: 0,
+    //         hole6_score: 0,
+    //         hole7_score: 0,
+    //         hole8_score: 0,
+    //         hole9_score: 0,
+    //         hole10_score: 0,
+    //         hole11_score: 0,
+    //         hole12_score: 0,
+    //         hole13_score: 0,
+    //         hole14_score: 0,
+    //         hole15_score: 0,
+    //         hole16_score: 0,
+    //         hole17_score: 0,
+    //         hole18_score: 0
+    //     }]
+    // };
+
     const initialState = {
         course_name: "",
         tees_name: "",
         tees_yardage: "",
-        players: [{ 
-            name: "", 
-            hole1_score: 0, 
-            hole2_score: 0,
-            hole3_score: 0,
-            hole4_score: 0,
-            hole5_score: 0,
-            hole6_score: 0,
-            hole7_score: 0,
-            hole8_score: 0,
-            hole9_score: 0,
-            hole10_score: 0,
-            hole11_score: 0,
-            hole12_score: 0,
-            hole13_score: 0,
-            hole14_score: 0,
-            hole15_score: 0,
-            hole16_score: 0,
-            hole17_score: 0,
-            hole18_score: 0
-        }]
-    };
+        players: [
+          {
+            name: "",
+            ...Object.fromEntries(
+              Array.from({ length: 18 }, (_, i) => [`hole${i + 1}_score`, 0])
+            )
+          }
+        ]
+      };
+      
+      
+      
 
 export default class ScorecardForm extends Component {
 
@@ -94,7 +111,7 @@ export default class ScorecardForm extends Component {
         const {course_name, tees_name, tees_yardage, players} = this.state
         return (
             <form className="scorecard-form" onSubmit={this.handleSubmit}>
-                {this.props.scorecard ? <h2>EDIT This Scorecard</h2> : <h2>CREATE a New Scorecard</h2> }
+                {this.props.scorecard ? <h2>EDIT This Scorecard</h2> : <h2>CREATE New Scorecard</h2> }
                 <label>Course Name</label>
                 <input
                     type="text" 
@@ -186,11 +203,10 @@ export default class ScorecardForm extends Component {
                     type="button" 
                     className="add-player-button"
                     onClick={this.handleAddPlayer}
-                    >
-                Add Another Player</button>
-                <div>
-                    <h6>(Scores for all holes initially set to zero)</h6>
-                </div>
+                >
+                Add Another Player
+                </button>
+            
                 <button type="submit">SUBMIT</button>
             </form>
         );

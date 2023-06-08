@@ -59,8 +59,10 @@ export default function ScorecardItem({ id, course_name, tees_name, tees_yardage
                             {renderPlayerScores()}
                         </tbody>
                     </table>
-                    <button onClick={handleClick} className="delete-button">DELETE Scorecard</button>
-                    <button onClick={handleToggle} className="edit-button">EDIT Scorecard</button>
+                    <div className="card-delete-edit">
+                        <button onClick={handleClick} className="delete-button">DELETE Scorecard</button>
+                        <button onClick={handleToggle} className="edit-button">EDIT Scorecard</button>
+                    </div>
                 </div>
             </li>
         )
