@@ -26,6 +26,10 @@ body {
   margin-bottom: 20px;
 }
 
+.scorecard-form input, .scorecard-form button {
+  width: 95%;
+}
+
 .edit-hole-score {
   width: 30px;
   padding-right: 0;
@@ -77,7 +81,7 @@ body {
 
 .scorecard-item {
   background-color: white;
-  width: auto;
+  width: 500px;
   height: max-content;
   box-shadow: 10px 20px 20px -10px rgb(154 154 214);
   border-radius: 6px;
@@ -160,5 +164,11 @@ body {
 .edit-button {
   background-color: blue;
   color: white;
+}
+
+.card-delete-edit {
+  margin-top: 15px;
+  display: flex;
+  justify-content: space-evenly;
 }
 
