@@ -1,49 +1,19 @@
 import React, { Component, useState } from 'react';
 import ScorecardItem from './ScorecardItem';
 
-    // const initialState = {
-    //     course_name: "",
-    //     tees_name: "",
-    //     tees_yardage: "",
-    //     players: [{ 
-    //         name: "", 
-    //         hole1_score: 0, 
-    //         hole2_score: 0,
-    //         hole3_score: 0,
-    //         hole4_score: 0,
-    //         hole5_score: 0,
-    //         hole6_score: 0,
-    //         hole7_score: 0,
-    //         hole8_score: 0,
-    //         hole9_score: 0,
-    //         hole10_score: 0,
-    //         hole11_score: 0,
-    //         hole12_score: 0,
-    //         hole13_score: 0,
-    //         hole14_score: 0,
-    //         hole15_score: 0,
-    //         hole16_score: 0,
-    //         hole17_score: 0,
-    //         hole18_score: 0
-    //     }]
-    // };
-
     const initialState = {
         course_name: "",
         tees_name: "",
         tees_yardage: "",
         players: [
-          {
-            name: "",
-            ...Object.fromEntries(
-              Array.from({ length: 18 }, (_, i) => [`hole${i + 1}_score`, 0])
-            )
-          }
-        ]
-      };
-      
-      
-      
+            {
+                name: "",
+                ...Object.fromEntries(
+                Array.from({ length: 18 }, (_, i) => [`hole${i + 1}_score`, 0])
+                )
+            }
+            ]
+        };
 
 export default class ScorecardForm extends Component {
 

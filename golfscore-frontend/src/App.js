@@ -60,7 +60,6 @@ class App extends Component {
     fetch(scorecardUrl + "/" + id, {method: "DELETE"} )
   }
 
-
   render(){
     return (
       <div>
