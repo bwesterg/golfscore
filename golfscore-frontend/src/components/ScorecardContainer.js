@@ -9,8 +9,10 @@ export default function ScorecardContainer({scorecards, deleteScorecard, updateS
     }
 
     return (
-        <ul className="scorecard-list">
-            {showScorecards()}
-        </ul>
+        <div className="container">
+            <ul className="scorecard-list">
+                {showScorecards()}
+            </ul>
+        </div>
     )
 }
