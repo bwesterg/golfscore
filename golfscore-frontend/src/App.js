@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import './App.css';
 import ScorecardContainer from './components/ScorecardContainer';
 import ScorecardForm from './components/ScorecardForm';
-const scorecardUrl = "http://127.0.0.1:3000/scorecards";
+import Header from './components/Header';
+const scorecardUrl = "http://127.0.0.1:3000/scorecards/";
 
 class App extends Component {
 
@@ -40,7 +41,7 @@ class App extends Component {
   
     this.setState({ scorecards })
 
-    fetch(scorecardUrl + "/" + updatedScorecard.id,  {
+    fetch(scorecardUrl + updatedScorecard.id,  {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json"
@@ -57,15 +58,14 @@ class App extends Component {
       scorecards: filteredScorecards
     })
 
-    fetch(scorecardUrl + "/" + id, {method: "DELETE"} )
+    fetch(scorecardUrl + id, {method: "DELETE"} )
   }
 
   render(){
     return (
       <div>
-        <div className="title-bar">
-          <h1>Golf Scorecard App</h1>
-        </div>
+        <Header />
+        
         <ScorecardForm submitAction={this.addScorecard}/>
         <ScorecardContainer updateScorecard={this.updateScorecard} deleteScorecard={this.deleteScorecard} scorecards={this.state.scorecards}/>
       </div>

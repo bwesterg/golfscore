@@ -135,7 +135,7 @@ export default class ScorecardForm extends Component {
                                         <tr>
                                             <td>
                                                 <input
-                                                    class="player-name-edit"
+                                                    className="player-name-edit"
                                                     type="text"
                                                     name={`player${playerIndex}`}
                                                     value={player.name}
@@ -147,7 +147,7 @@ export default class ScorecardForm extends Component {
                                             {[...Array(18)].map((_, holeIndex) => (
                                                 <td key={holeIndex}>
                                                     <input
-                                                        class="hole-score"
+                                                        className="hole-score"
                                                         type="number"
                                                         name={`hole${holeIndex + 1}`}
                                                         value={player[`hole${holeIndex + 1}_score`]}

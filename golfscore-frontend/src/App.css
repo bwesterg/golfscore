@@ -1,3 +1,5 @@
+
+
 * {
   font-family: Georgia, 'Times New Roman', Times, serif;
 }
@@ -171,4 +173,21 @@ body {
   display: flex;
   justify-content: space-evenly;
 }
+
+/* Style the header */
+.header-titlebox {
+  display: flex;
+  justify-content: center;
+}
+
+.header {
+  padding: 10px 16px;
+  background: #555;
+  color: #f1f1f1;
+  position: sticky;
+  top: 0;
+  width: 100%
+}
+
+
 
