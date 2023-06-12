@@ -189,5 +189,9 @@ body {
   width: 100%
 }
 
-
+.close-button {
+  background-color: red;
+  color: white;
+  font-weight: bolder;
+}
 

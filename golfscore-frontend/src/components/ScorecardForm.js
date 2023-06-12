@@ -77,6 +77,12 @@ export default class ScorecardForm extends Component {
         }
     }
     
+    showCloseButton = () => {
+        return this.props.scorecard
+            ? <button className="close-button" onClick={this.props.handleToggle}>CLOSE Edit Form</button>
+            : null
+    }
+
     render() {
         const {course_name, tees_name, tees_yardage, players} = this.state
         return (
@@ -178,6 +184,7 @@ export default class ScorecardForm extends Component {
                 </button>
             
                 <button type="submit">SUBMIT</button>
+                {this.showCloseButton()}
             </form>
         );
     }
