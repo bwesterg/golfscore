@@ -3,7 +3,9 @@ import './App.css';
 import ScorecardContainer from './components/ScorecardContainer';
 import ScorecardForm from './components/ScorecardForm';
 import Header from './components/Header';
+import { postScorecard, patchScorecard, deleteScorecard } from './helpers';
 const scorecardUrl = "http://127.0.0.1:3000/scorecards/";
+
 
 class App extends Component {
 
@@ -21,19 +23,15 @@ class App extends Component {
       .then(console.log('test'))
       .then(scorecards=>this.setState({scorecards}))
   }
+  // Leaving ^^this^^ fetch in App.js, rather than moving to
+  // helpers, b/c it is setting state.  IOW, easier to read.
 
   addScorecard = (newScorecard) => {
     this.setState({
       scorecards: [...this.state.scorecards, newScorecard]
     })
-
-    fetch(scorecardUrl, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify(newScorecard)
-    })
+    postScorecard(newScorecard)
+    //fetch in helpers
   }
 
   updateScorecard = (updatedScorecard) => {
@@ -41,15 +39,10 @@ class App extends Component {
   
     this.setState({ scorecards })
 
-    fetch(scorecardUrl + updatedScorecard.id,  {
-      method: "PATCH",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify(updatedScorecard)
-      //will need to update this ^^^ to 'scorecard: updatedScorecard' if backend 
-      //is updated to use strong params.
-    })
+    patchScorecard(updatedScorecard)
+    //fetch in helpers
+
+
   }
 
   deleteScorecard = (id) => {
@@ -58,7 +51,9 @@ class App extends Component {
       scorecards: filteredScorecards
     })
 
-    fetch(scorecardUrl + id, {method: "DELETE"} )
+    deleteScorecard(id)
+    //fetch in helpers
+
   }
 
   render(){
