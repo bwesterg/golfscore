@@ -1,7 +1,13 @@
 import React from 'react';
 import ScorecardItem from './ScorecardItem';
+import ScorecardForm from './ScorecardForm';
 
-export default function ScorecardContainer({scorecards, deleteScorecard, updateScorecard }){
+export default function ScorecardContainer({ scorecards, deleteScorecard, updateScorecard }){
+
+    // const activateForm = () => {
+    //     let element = document.getElementById("current-scorecards");
+    //     element.classList.add("hidden");
+    // }
 
     const showScorecards = () => {
 
@@ -9,7 +15,7 @@ export default function ScorecardContainer({scorecards, deleteScorecard, updateS
     }
 
     return (
-        <div className="container">
+        <div className="container" id="current-scorecards">
             <ul className="scorecard-list">
                 {showScorecards()}
             </ul>
