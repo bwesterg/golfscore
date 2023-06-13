@@ -7,6 +7,8 @@ import { postScorecard, patchScorecard, deleteScorecard } from './helpers';
 const scorecardUrl = "http://127.0.0.1:3000/scorecards/";
 
 
+
+
 class App extends Component {
 
   state = {
@@ -53,8 +55,9 @@ class App extends Component {
 
     deleteScorecard(id)
     //fetch in helpers
-
   }
+
+  
 
   render(){
     return (
