@@ -12,7 +12,8 @@ const scorecardUrl = "http://127.0.0.1:3000/scorecards/";
 class App extends Component {
 
   state = {
-    scorecards: []
+    scorecards: [],
+    // showForm: prevState,
   }
 
   componentDidMount(){
@@ -22,7 +23,7 @@ class App extends Component {
   getScorecards = () => {
     fetch(scorecardUrl)
       .then(response=>response.json())
-      .then(console.log('test'))
+      // .then(console.log('test'))
       .then(scorecards=>this.setState({scorecards}))
   }
   // Leaving ^^this^^ fetch in App.js, rather than moving to
@@ -57,9 +58,23 @@ class App extends Component {
     //fetch in helpers
   }
 
+  // constructor(props) {
+  //   super(props);
+  //   this.state = {
+  //     showForm: false,
+  //   }
+
+    // toggleForm = () => {
+    //   this.setState((prevState) => ({
+    //     showForm: !prevState.showForm,
+    //   }));
+    // };
   
 
   render(){
+
+    const { showForm } = this.state;
+
     return (
       <div>
         <Header />

@@ -3,12 +3,12 @@ import ScorecardForm from './ScorecardForm';
 
 
 export default function Header() {
-    const [showForm, setShowForm] = useState(false);
+    // const [showForm, setShowForm] = useState(false);
 
-    const toggleForm = () => {
-        setShowForm(!showForm);
-        console.log('hello');
-    };
+    // const toggleForm = () => {
+    //     setShowForm(!showForm);
+    //     console.log('hello');
+    // };
 
     return (
         <header className="header" id="myHeader">
@@ -16,11 +16,12 @@ export default function Header() {
                 <h2>Golf Scorecard</h2>
                 <button 
                     className="new-scorecard"
-                    onClick={toggleForm}>
+                    // onClick={toggleForm}
+                >
                     Create New Scorecard
                 </button>
             </div>
-            {showForm && <ScorecardForm />}
+            {/* <ScorecardForm /> */}
         </header>
     )
 }
